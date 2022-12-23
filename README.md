@@ -2,8 +2,10 @@
 一键搭建xiuno论坛脚本
 
 执行以下命令即可
-bash <(curl -sL https://raw.githubusercontent.com/bhcqzf/easyxiuno/main/bbs.sh)
 
+```shell
+bash <(curl -sL https://raw.githubusercontent.com/bhcqzf/easyxiuno/main/bbs.sh)
+```
 
 
 安装成功后记得再次执行脚本，删除install目录
