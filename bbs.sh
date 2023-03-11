@@ -21,10 +21,10 @@ checkSystem() {
     res=`which yum 2>/dev/null`
     if [[ "$?" != "0" ]]; then
         res=`which apt 2>/dev/null`
-        if [[ "$?" != "0" ]]; then
-            colorEcho $RED " 不受支持的Linux系统"
-            exit 1
-        fi
+        #if [[ "$?" != "0" ]]; then
+        #    colorEcho $RED " 不受支持的Linux系统"
+        #    exit 1
+        #fi
         PMT="apt"
         CMD_INSTALL="apt install -y "
         CMD_REMOVE="apt remove -y "
@@ -35,10 +35,10 @@ checkSystem() {
         CMD_REMOVE="yum remove -y "
         CMD_UPGRADE="yum update -y"
     fi
-	if [[ $PMT == "apt"   ]];then
-	        colorEcho $RED " 不受支持的Linux系统"
-            exit 1
-	fi
+	#if [[ $PMT == "apt"   ]];then
+	#        colorEcho $RED " 不受支持的Linux系统"
+        #    exit 1
+	#fi
     res=`which systemctl 2>/dev/null`
     if [[ "$?" != "0" ]]; then
         colorEcho $RED " 系统版本过低，请升级到最新版本"
@@ -81,9 +81,9 @@ EOF
 }
 
 preinstall() {
-    #$PMT clean all
+    $PMT clean all
     [[ "$PMT" = "apt" ]] && $PMT update
-    #echo $CMD_UPGRADE | bash
+    echo $CMD_UPGRADE | bash
     echo ""
     colorEcho $BLUE " 安装必要软件"
     if [[ "$PMT" = "yum" ]]; then
